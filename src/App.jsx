@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import  {Button, Spin } from 'antd';
+import { ADD, SUB } from "./redux/types";
 import { login, getAllTasks } from './requests/auth';
 import { addTask } from './requests/tasks';
-import { Button } from 'antd';
-import 'antd/dist/antd.css';
 
 const App = () => {
   const [token, setToken] = useState('');
   const [tasks, setTasks] = useState([]);
+
+  const dispatch = useDispatch();
+  const counter = useSelector((state) => state.counter);
 
   useEffect(() => {
     login().then((user) => {
@@ -24,10 +28,14 @@ const App = () => {
     });
   };
 
-  if (!tasks.length) return <div>ожидаем загрузку</div>;
+  if (!tasks.length) return <Spin />;
 
   return (
-    <div style={{ width: 800, margin: '0 auto' }}>
+    <div className='container'>
+      <div>{counter}</div>
+      <Button onClick={() => dispatch({ type: ADD })}>add +1</Button>
+      <Button onClick={() => dispatch({ type: SUB })}>sub -1</Button>
+
       {tasks.map(({ description, id }) => <div key={id}>{description}</div>)}
 
       <Button onClick={addTaskFn}>add task</Button>
