@@ -18,15 +18,11 @@ const tasksList = [
   }
 ];
 
-const tasks = (state = tasksList, { type, id, description, isCompleted }) => {
-  switch (type) {
+const tasks = (state = tasksList, action) => {
+  switch (action.type) {
     case ADD_TASK:
       return [
-        {
-          id,
-          description,
-          isCompleted
-        },
+        action.payload,
         ...state,
       ];
 
