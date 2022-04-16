@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
-import counters from './reducers/counters';
+import tasks from './reducers/tasks';
 
 export default combineReducers({
-  counter: counters
+  tasks
 })
