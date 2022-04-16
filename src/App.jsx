@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import  {Button, Spin } from 'antd';
+import { Button, Spin } from 'antd';
 import { ADD, SUB } from "./redux/types";
 import { login, getAllTasks } from './requests/auth';
 import { addTask } from './requests/tasks';
@@ -10,7 +10,7 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
 
   const dispatch = useDispatch();
-  const counter = useSelector((state) => state.counter);
+  const counters = useSelector((state) => state.counter);
 
   useEffect(() => {
     login().then((user) => {
@@ -32,11 +32,11 @@ const App = () => {
 
   return (
     <div className='container'>
-      <div>{counter}</div>
+      <div>{counters.counter}</div>
       <Button onClick={() => dispatch({ type: ADD })}>add +1</Button>
       <Button onClick={() => dispatch({ type: SUB })}>sub -1</Button>
 
-      {tasks.map(({ description, id }) => <div key={id}>{description}</div>)}
+      {tasks.map(({ description, _id }) => <div key={_id}>{description}</div>)}
 
       <Button onClick={addTaskFn}>add task</Button>
     </div>
