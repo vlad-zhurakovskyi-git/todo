@@ -7,11 +7,9 @@ import TodoAddTask from "./TodoAddTask";
 const TodoList = () => {
   const tasks = useSelector((state) => state.tasks);
 
-  if (!tasks.length) return <Spin />;
-
   return (
     <div className='todo-list'>
-      <TodoAddTask/>
+      {!tasks.length && <div className='todo-list__empty'>Тут могли бы быть ваши задачи, купить рекламу по номеру +38063.....64</div>}
 
       {tasks.map((task) => (
         <TodoItem
