@@ -9,7 +9,7 @@ const TodoList = () => {
 
   return (
     <div className='todo-list'>
-      {!tasks.length && <Spin/>}
+      {!tasks.length && <div className='todo-list__empty'>Тут могли бы быть ваши задачи, купить рекламу по номеру +38063.....64</div>}
 
       {tasks.map((task) => (
         <TodoItem

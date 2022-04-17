@@ -1,6 +1,11 @@
 .todo {
   padding: 40px 0;
 
+  .container {
+    width: 600px;
+    margin: 0 auto;
+  }
+
   .todo-item {
     position: relative;
     display: flex;
@@ -18,6 +23,7 @@
       padding-left: 0;
       border: none;
       background-color: transparent;
+      text-overflow: ellipsis;
     }
   }
 
@@ -27,11 +33,11 @@
     flex-direction: column;
     min-height: 40px;
     border: 1px solid #001529;
+  }
 
-    .ant-spin {
-      display: flex;
-      margin: auto;
-    }
+  .todo-list__empty {
+    display: flex;
+    margin: auto;
   }
 
   .todo-input {
