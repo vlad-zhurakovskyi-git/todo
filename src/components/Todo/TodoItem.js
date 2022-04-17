@@ -7,12 +7,10 @@ import {deleteTask, isCompletedTask} from "../../redux/actions/actions";
 const TodoItem = ({ task }) => {
   const { description, isCompleted, id } = task;
   const [inputValue, setInputValue] = useState(description);
-  const [isChecked, setChecked] = useState(isCompleted);
 
   const dispatch = useDispatch();
 
   const onChange = (e) => {
-    setChecked(!isChecked);
     dispatch(isCompletedTask(id));
     console.log(`checked = ${e.target.checked}`);
   };
@@ -23,7 +21,7 @@ const TodoItem = ({ task }) => {
 
   return (
     <div className='todo-item'>
-      <Checkbox checked={isChecked} onChange={onChange} />
+      <Checkbox checked={isCompleted} onChange={onChange} />
 
       <Input
         placeholder="Basic usage"
