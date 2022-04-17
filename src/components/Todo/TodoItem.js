@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Checkbox, Input, Button } from "antd";
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { useDispatch } from "react-redux";
-import { deleteTask } from "../../redux/actions/actions";
+import {deleteTask, isCompletedTask} from "../../redux/actions/actions";
 
 const TodoItem = ({ task }) => {
   const { description, isCompleted, id } = task;
@@ -13,6 +13,7 @@ const TodoItem = ({ task }) => {
 
   const onChange = (e) => {
     setChecked(!isChecked);
+    dispatch(isCompletedTask(id));
     console.log(`checked = ${e.target.checked}`);
   };
 
