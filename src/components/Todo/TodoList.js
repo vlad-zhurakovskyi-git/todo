@@ -14,7 +14,10 @@ const TodoList = () => {
       <TodoAddTask/>
 
       {tasks.map((task) => (
-        <TodoItem key={task.id} task={task} />
+        <TodoItem
+          key={task.id}
+          task={task}
+        />
       ))}
     </div>
   )

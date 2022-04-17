@@ -2,17 +2,17 @@ import { ADD_TASK } from "../actions/actionTypes";
 
 const tasksList = [
   {
-    "completed": false,
+    "isCompleted": false,
     "id": "6259b999d8af83001737933c",
     "description": "task 1",
   },
   {
-    "completed": false,
+    "isCompleted": true,
     "id": "6259b9c5d8af83001737933f",
     "description": "task 2",
   },
   {
-    "completed": false,
+    "isCompleted": false,
     "id": "6259b9cdd8af830017379341",
     "description": "task 3",
   }

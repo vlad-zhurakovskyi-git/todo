@@ -1,23 +1,30 @@
 import React, {useState} from "react";
-import {Checkbox, Input} from "antd";
-
-const onChange = (e) => {
-  console.log(`checked = ${e.target.checked}`);
-}
+import { Checkbox, Input, Button, Radio } from "antd";
+import { CloseCircleOutlined } from '@ant-design/icons';
 
 const TodoItem = ({ task }) => {
-  const { description } = task;
-  const [inputValue, setInputVaule] = useState(description);
+  const { description, isCompleted, id } = task;
+  const [inputValue, setInputValue] = useState(description);
+  const [isChecked, setChecked] = useState(isCompleted);
+
+  const onChange = (e) => {
+    setChecked(!isChecked);
+    console.log(`checked = ${e.target.checked}`);
+  };
 
   return (
     <div className='todo-item'>
-      <Checkbox onChange={onChange} />
+      <Checkbox checked={isChecked} onChange={onChange} />
 
       <Input
         placeholder="Basic usage"
         value={inputValue}
-        onChange={(e) => setInputVaule(e.target.value)}
+        onChange={(e) => setInputValue(e.target.value)}
       />
+
+      <Button type="link" danger>
+        <CloseCircleOutlined />
+      </Button>
     </div>
   )
 };
